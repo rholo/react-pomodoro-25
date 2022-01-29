@@ -1,16 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import RoundButton from './RoundButton';
 
+const FlexWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Controls = ({ name = '', timer, subtract, add }) => {
   return (
-    <div className="text-center m-5">
-      <h5 id={`${name.toLowerCase()}-label`}>{`${name}`}</h5>
-      <div className="d-flex justify-content-center align-items-center flex-row-reverse">
+    <div>
+      <h5>{name}</h5>
+      <FlexWrapper>
         <RoundButton onClick={() => add()}>M</RoundButton>
+        <strong>{timer}</strong>
         <RoundButton onClick={() => subtract()}>L</RoundButton>
-        <p>{timer}</p>
-        <RoundButton onClick={() => subtract()}>R</RoundButton>
-      </div>
+      </FlexWrapper>
     </div>
   );
 };

@@ -10,6 +10,9 @@ body {
 main {
   height: 100vh;
   color: white;
-  padding: 3%;
   font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

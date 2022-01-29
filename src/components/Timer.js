@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const JumboNumber = styled.strong`
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: normal;
 `;
 
@@ -11,10 +11,6 @@ const Timer = (props) => {
   const timerToClock = (timeLeft) => {
     return timeLeft;
   };
-  return (
-    <div className="text-center my-3">
-      <JumboNumber>{timerToClock(props.timeLeft)}</JumboNumber>
-    </div>
-  );
+  return <JumboNumber>{timerToClock(props.timeLeft)}</JumboNumber>;
 };
 export default Timer;
