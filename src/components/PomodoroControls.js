@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Controls from './Controls';
+import { store } from '../store';
+
 const PomodoroControls = (props) => {
+  const { state } = useContext(store);
   return (
     <div>
-      <Controls name="Session" timer={props.session} />
-      <Controls name="Break" timer={props.intervals} />
+      <Controls name="Session" timer={state.timer} />
+      <Controls name="Break" timer={state.intervals} />
     </div>
   );
 };

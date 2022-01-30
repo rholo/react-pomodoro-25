@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { store } from './store';
 import Header from './components/Header';
 import Timer from './components/Timer';
 import TimerControls from './components/TimerControls';
@@ -6,22 +7,23 @@ import PomodoroControls from './components/PomodoroControls';
 import './style.scss';
 
 export default function App() {
-  const [timeLength, setTimeLeft] = useState(25);
-  const [intervalLength, setIntervalLength] = useState(3);
-
+  const { state, dispatch } = useContext(store);
+  const { timer, intervals } = state;
   const subtract = () => {
-    setTimeLeft(timeLeft - 1);
+    dispatch({ type: 'DECREMENT' });
   };
   const add = () => {
-    setTimeLeft(timeLeft + 1);
+    dispatch({ type: 'INCREMENT' });
   };
 
   return (
     <main>
       <Header title="Pomodoro timer" />
-      <Timer timeLeft={timeLength} />
+      <button onClick={add}>add context</button>
+      <button onClick={subtract}>remove context</button>
+      <Timer timeLeft={state.timer} />
       <TimerControls />
-      <PomodoroControls intervals={intervalLength} session={timeLength} />
+      <PomodoroControls intervals={intervals} session={timer} />
     </main>
   );
 }
