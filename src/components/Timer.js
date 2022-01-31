@@ -6,6 +6,11 @@ const Timer = (props) => {
   const timerToClock = (timeLeft) => {
     return timeLeft;
   };
-  return <Number size={9}>{timerToClock(props.timeLeft)}</Number>;
+  return (
+    <>
+      <Number size={9}>{timerToClock(props.timeLeft)}</Number>
+      <Number size={2}>59</Number>
+    </>
+  );
 };
 export default Timer;
