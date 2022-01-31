@@ -4,7 +4,7 @@ import { Button } from './styled';
 const TimerControls = () => {
   return (
     <div>
-      <Button>Play / Pause</Button>
+      <Button>Start / Pause</Button>
     </div>
   );
 };
