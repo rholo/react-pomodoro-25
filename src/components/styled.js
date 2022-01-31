@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { color } from 'styled-system';
 
 const RoundButton = styled.button`
+  ${color}
   background: transparent;
   border:1px solid white;
-  color: white;
   font-size: 1.2rem;
   font-weight:100;
   border-radius:50%;

@@ -6,9 +6,13 @@ const Controls = ({ name = '', timer, subtract, add }) => {
     <FlexCenter direction="column">
       <h5>{name}</h5>
       <FlexCenter>
-        <RoundButton onClick={() => subtract()}>-</RoundButton>
+        <RoundButton color="white" onClick={() => subtract()}>
+          -
+        </RoundButton>
         <Number size={2}>{timer}</Number>
-        <RoundButton onClick={() => add()}>+</RoundButton>
+        <RoundButton color="white" onClick={() => add()}>
+          +
+        </RoundButton>
       </FlexCenter>
     </FlexCenter>
   );
