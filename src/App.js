@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <main>
-      <Header title="Pomodoro timer" />
+      <Header title="Pomodoro timer 25" />
       <Timer timeLeft={state.timer} />
       <TimerControls />
       <PomodoroControls intervals={intervals} session={timer} />
