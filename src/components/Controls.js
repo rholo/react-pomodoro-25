@@ -6,9 +6,9 @@ const Controls = ({ name = '', timer, subtract, add }) => {
     <div>
       <h5>{name}</h5>
       <FlexWrapper>
-        <RoundButton onClick={() => add()}>M</RoundButton>
+        <RoundButton onClick={() => subtract()}>-</RoundButton>
         <Number size={2}>{timer}</Number>
-        <RoundButton onClick={() => subtract()}>L</RoundButton>
+        <RoundButton onClick={() => add()}>+</RoundButton>
       </FlexWrapper>
     </div>
   );

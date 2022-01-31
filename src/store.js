@@ -12,9 +12,13 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case 'INCREMENT':
-        return { ...state, timer: state.timer + 1};
-      case 'DECREMENT':
+      case 'INCREMENT_INTERVALS':
+        return { ...state, intervals: state.intervals + 1 };
+      case 'DECREMENT_INTERVALS':
+        return { ...state, intervals: state.intervals - 1 };
+      case 'INCREMENT_TIMER':
+        return { ...state, timer: state.timer + 1 };
+      case 'DECREMENT_TIMER':
         return { ...state, timer: state.timer - 1 };
       default:
         throw new Error();

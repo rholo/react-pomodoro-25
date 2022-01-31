@@ -1,10 +1,10 @@
 import React from 'react';
-import { RoundButton } from './styled';
+import { Button } from './styled';
 
-const TimerControls = (props) => {
+const TimerControls = () => {
   return (
     <div>
-      <RoundButton>PP</RoundButton>
+      <Button>Play / Pause</Button>
     </div>
   );
 };
