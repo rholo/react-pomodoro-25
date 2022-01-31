@@ -1,16 +1,16 @@
 import React from 'react';
-import { RoundButton, FlexWrapper, Number } from './styled';
+import { RoundButton, FlexCenter, Number } from './styled';
 
 const Controls = ({ name = '', timer, subtract, add }) => {
   return (
-    <div>
+    <FlexCenter direction="column">
       <h5>{name}</h5>
-      <FlexWrapper>
+      <FlexCenter>
         <RoundButton onClick={() => subtract()}>-</RoundButton>
         <Number size={2}>{timer}</Number>
         <RoundButton onClick={() => add()}>+</RoundButton>
-      </FlexWrapper>
-    </div>
+      </FlexCenter>
+    </FlexCenter>
   );
 };
 

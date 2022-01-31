@@ -14,6 +14,7 @@ export default function App() {
     <main>
       <Header title="Pomodoro timer" />
       <Timer timeLeft={state.timer} />
+      <small>59</small>
       <TimerControls />
       <PomodoroControls intervals={intervals} session={timer} />
     </main>

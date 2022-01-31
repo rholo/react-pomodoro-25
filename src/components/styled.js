@@ -17,13 +17,18 @@ const Button = styled.button`
   padding: 1rem;
   color: white;
 `;
-const FlexWrapper = styled.div`
+const FlexCenter = styled.div`
   display: flex;
+  flex-direction: ${(props) =>
+    props.direction ? `${props.direction}` : 'row'};
   align-items: center;
+  justify-content: center;
 `;
 const Number = styled.span`
   font-weight: 100;
-  margin: 1rem;
+  margin:1rem;
+  padding:0;
+  line-height:0;
   font-size: ${(props) => (props.size ? `${props.size}rem` : '2rem')}
 `;
-export { RoundButton, Button, FlexWrapper, Number };
+export { RoundButton, Button, FlexCenter, Number };

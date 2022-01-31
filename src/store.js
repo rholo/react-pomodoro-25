@@ -15,11 +15,14 @@ const StateProvider = ({ children }) => {
       case 'INCREMENT_INTERVALS':
         return { ...state, intervals: state.intervals + 1 };
       case 'DECREMENT_INTERVALS':
-        return { ...state, intervals: state.intervals - 1 };
+        return {
+          ...state,
+          intervals: state.intervals > 0 ? state.intervals - 1 : 0,
+        };
       case 'INCREMENT_TIMER':
         return { ...state, timer: state.timer + 1 };
       case 'DECREMENT_TIMER':
-        return { ...state, timer: state.timer - 1 };
+        return { ...state, timer: state.timer > 0 ? state.timer - 1 : 0 };
       default:
         throw new Error();
     }
