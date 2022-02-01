@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { store } from './store';
 import Header from './components/Header';
 import Timer from './components/Timer';
-import TimerControls from './components/TimerControls';
 import PomodoroControls from './components/PomodoroControls';
 import './style.scss';
 
@@ -13,8 +12,7 @@ export default function App() {
   return (
     <main>
       <Header title="Pomodoro timer 25" />
-      <Timer timeLeft={state.timer} />
-      <TimerControls />
+      <Timer />
       <PomodoroControls intervals={intervals} session={timer} />
     </main>
   );

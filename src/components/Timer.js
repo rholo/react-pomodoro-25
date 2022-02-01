@@ -1,15 +1,21 @@
-import React, { useEffect } from 'react';
-import { Number } from './styled';
+import React, { useContext, useState } from 'react';
+import { store } from '../store';
+import { Number, Button } from './styled';
 
-const Timer = (props) => {
-  // useEffect for timer
-  const timerToClock = (timeLeft) => {
-    return timeLeft;
-  };
+const Timer = () => {
+  const { state } = useContext(store); 
+  const { timer } = state;
+  const [seconds, setSeconds] = useState(59);
+  const startPause = () => {
+    setSeconds(seconds - 1);
+  }
   return (
     <>
-      <Number size={9}>{timerToClock(props.timeLeft)}</Number>
-      <Number size={2}>59</Number>
+      <Number size={9}>{timer}</Number>
+      <Number size={2}>{seconds}</Number>
+      <div>
+        <Button onClick={startPause}>Start / Pause</Button>
+    </div>
     </>
   );
 };
