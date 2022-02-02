@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { store } from '../store';
+import useInterval from '../hooks/useInterval';
 import { Number, Button } from './styled';
 
 const Timer = () => {
@@ -7,6 +8,10 @@ const Timer = () => {
   const { timer } = state;
   const [seconds, setSeconds] = useState(59);
   const [minutes, setMinutes] = useState(timer);
+
+  //useInterval(() => {
+  // setSeconds(seconds -1)
+  // }, 1000)
 
   const startPause = () => {};
 

@@ -1,20 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useLayoutEffect } from 'react';
 // inspired by https://overreacted.io/making-setinterval-declarative-with-react-hooks/
-const useInterval = (callbackFn, delay) => {
-  const intervalID = useRef(null);
+function useInterval(callbackFn, delay) {
   const currentCallback = useRef(callbackFn);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     currentCallback.current = callbackFn;
-  });
+  }, [callbackFn]);
 
   useEffect(() => {
-    const tick = () => currentCallback.current();
-    if (typeof delay === 'number') {
-      intervalID.current = window.setInterval(tick, delay);
-      return () => window.clearInterval(intervalID.current);
+    if (!delay && delay !== 0) {
+      return;
     }
+    const id = setInterval(() => currentCallback.current(), delay);
+    return () => clearInterval(id);
   }, [delay]);
-  return intervalID.current;
-};
+}
 export default useInterval;
