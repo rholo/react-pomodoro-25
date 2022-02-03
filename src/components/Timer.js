@@ -1,27 +1,44 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { store } from '../store';
 import useInterval from '../hooks/useInterval';
 import { Number, Button } from './styled';
 
 const Timer = () => {
-  const { state } = useContext(store);
-  const { timer } = state;
-  const [seconds, setSeconds] = useState(59);
-  const [minutes, setMinutes] = useState(timer);
+  const { state, dispatch } = useContext(store);
+  const { started, minutes, breath, session } = state;
+  const [seconds, setSeconds] = useState(10);
+  const [buttonLabel, setButtonLabel] = useState('Start');
 
-  //useInterval(() => {
-  // setSeconds(seconds -1)
-  // }, 1000)
+  useInterval(
+    () => {
+      if (started) {
+        setSeconds(seconds - 1);
+        if (minutes > 0 && seconds === 0) {
+          dispatch({ type: 'DECREMENT_SESSION' });
+        }
+        if (seconds === 0 && minutes > 0) {
+          dispatch({ type: 'COUNTDOWN' });
+          setSeconds(10);
+        }
+      }
+    },
+    !started ? null : 1000
+  );
 
-  const startPause = () => {};
+  const startPause = () => {
+    setButtonLabel(!started ? 'Pause' : 'Start');
+    dispatch({ type: 'TOGGLE_START' });
+    // setStart(!start);
+  };
 
   return (
     <>
-      <Number size={6}>{timer}</Number>
+      <Number size={6}>{minutes}</Number>
       <Number size={2}>{seconds}</Number>
       <div>
-        <Button onClick={startPause}>Start / Pause</Button>
+        <Button onClick={startPause}>{buttonLabel}</Button>
       </div>
+      <span>{breath ? 'Descanso' : 'Trabajo'}</span>
     </>
   );
 };
