@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Timer from './components/Timer';
 import PomodoroControls from './components/PomodoroControls';

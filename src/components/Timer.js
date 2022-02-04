@@ -5,40 +5,40 @@ import { Number, Button } from './styled';
 
 const Timer = () => {
   const { state, dispatch } = useContext(store);
-  const { started, minutes, breath, session } = state;
-  const [seconds, setSeconds] = useState(10);
+  const { session, started, minutes, breath } = state;
+  const [seconds, setSeconds] = useState(5);
   const [buttonLabel, setButtonLabel] = useState('Start');
-
-  useInterval(
-    () => {
-      if (started) {
-        setSeconds(seconds - 1);
-        if (minutes > 0 && seconds === 0) {
-          dispatch({ type: 'DECREMENT_SESSION' });
-        }
-        if (seconds === 0 && minutes > 0) {
-          dispatch({ type: 'COUNTDOWN' });
-          setSeconds(10);
+  const timerCheck = () => {
+    if (started) {
+      if (seconds === 0) {
+        dispatch({type: 'COUNTDOWN'})
+        if (minutes === 0) {
+          dispatch({type: 'SET_MINUTES'})
+          dispatch({type:'TOGGLE_BREATH'})
+          dispatch({type:`${!breath ? 'DECREMENT_SESSION':'DECREMENT_INTERVALS'}`})
+          
+          if (session === 0) {
+            return startPause()
+          }
         }
       }
-    },
-    !started ? null : 1000
-  );
-
+      setSeconds(seconds === 0 ? 10 : seconds -1);
+    }
+  }
   const startPause = () => {
     setButtonLabel(!started ? 'Pause' : 'Start');
     dispatch({ type: 'TOGGLE_START' });
     // setStart(!start);
   };
-
+  useInterval(
+    () => timerCheck(), !started ? null : 1000
+  );
   return (
     <>
       <Number size={6}>{minutes}</Number>
       <Number size={2}>{seconds}</Number>
-      <div>
-        <Button onClick={startPause}>{buttonLabel}</Button>
-      </div>
-      <span>{breath ? 'Descanso' : 'Trabajo'}</span>
+      <Button onClick={startPause}>{buttonLabel}</Button>
+      <span>{breath ? 'Take a rest!' : 'Working'}</span>
     </>
   );
 };

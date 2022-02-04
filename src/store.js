@@ -1,10 +1,10 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-  timer: 25,
-  minutes: 25,
-  intervals: 5,
-  session: 5,
+  timer: 2,
+  minutes: 2,
+  intervals: 2,
+  session: 2,
   started: false,
   breath: false,
 };
@@ -19,17 +19,12 @@ const StateProvider = ({ children }) => {
       case 'TOGGLE_START': {
         return { ...state, started: !state.started };
       }
+      case 'TOGGLE_BREATH': 
+        return {...state, breath: !state.breath};
+      case 'SET_MINUTES':
+        return {...state, minutes: !state.breath ? state.timer : state.intervals}
       case 'COUNTDOWN':
-        if (state.minutes === 0 && state.session > 0) {
-          return { ...state, minutes: state.intervals, breath: true };
-        }
-        if (state.session === 0 && state.minutes === 0) {
-          return {...state, started: false, breath: false}
-        }
-        if (state.minutes === 0 && state.breath) {
-          return { ...state, minutes: state.timer, breath: false };
-        }
-        return { ...state, minutes: state.minutes - 1, breath: false };
+        return { ...state, minutes: state.minutes > 0 ? state.minutes - 1 : 0 };
       case 'INCREMENT_SESSION':
         return { ...state, session: state.session + 1 };
       case 'DECREMENT_SESSION':
