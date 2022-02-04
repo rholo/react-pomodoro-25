@@ -22,7 +22,7 @@ const StateProvider = ({ children }) => {
       case 'TOGGLE_BREATH': 
         return {...state, breath: !state.breath};
       case 'SET_MINUTES':
-        return {...state, minutes: !state.breath ? state.timer : state.intervals}
+        return {...state, minutes: !state.breath ? state.minutes : state.intervals}
       case 'COUNTDOWN':
         return { ...state, minutes: state.minutes > 0 ? state.minutes - 1 : 0 };
       case 'INCREMENT_SESSION':

@@ -8,18 +8,19 @@ const Timer = () => {
   const { session, started, minutes, breath } = state;
   const [seconds, setSeconds] = useState(5);
   const [buttonLabel, setButtonLabel] = useState('Start');
+
   const timerCheck = () => {
     if (started) {
       if (seconds === 0) {
         dispatch({type: 'COUNTDOWN'})
         if (minutes === 0) {
-          dispatch({type: 'SET_MINUTES'})
           dispatch({type:'TOGGLE_BREATH'})
           dispatch({type:`${!breath ? 'DECREMENT_SESSION':'DECREMENT_INTERVALS'}`})
           
           if (session === 0) {
             return startPause()
           }
+          dispatch({type: 'SET_MINUTES'})
         }
       }
       setSeconds(seconds === 0 ? 10 : seconds -1);
