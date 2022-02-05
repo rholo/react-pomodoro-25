@@ -20,10 +20,9 @@ const Timer = () => {
           if (breath) {
             dispatch({type: 'DECREMENT_SESSION'})
           }
-          // dispatch({type:`${!breath ? 'DECREMENT_SESSION':'DECREMENT_INTERVALS'}`})
-          
           if (session === 0) {
-            return startPause()
+            startPause()
+            return dispatch({type: 'RESTART'})
           }
         }
       }

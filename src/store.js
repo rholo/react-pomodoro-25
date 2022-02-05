@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-  timer: 2,
-  minutes: 2,
+  timer: 3,
+  minutes: 3,
   intervals: 2,
   session: 2,
   started: false,
@@ -16,6 +16,8 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
+      case 'RESTART':
+        return {...initialState}
       case 'TOGGLE_START': {
         return { ...state, started: !state.started };
       }
