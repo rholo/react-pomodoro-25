@@ -15,15 +15,19 @@ const Timer = () => {
         dispatch({type: 'COUNTDOWN'})
         if (minutes === 0) {
           dispatch({type:'TOGGLE_BREATH'})
-          dispatch({type:`${!breath ? 'DECREMENT_SESSION':'DECREMENT_INTERVALS'}`})
+          dispatch({type: 'SET_MINUTES'})
+          console.log({minutes, seconds, session, breath})
+          if (breath) {
+            dispatch({type: 'DECREMENT_SESSION'})
+          }
+          // dispatch({type:`${!breath ? 'DECREMENT_SESSION':'DECREMENT_INTERVALS'}`})
           
           if (session === 0) {
             return startPause()
           }
-          dispatch({type: 'SET_MINUTES'})
         }
       }
-      setSeconds(seconds === 0 ? 10 : seconds -1);
+      setSeconds(seconds === 0 ? 5 : seconds -1);
     }
   }
   const startPause = () => {
