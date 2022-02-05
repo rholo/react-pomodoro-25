@@ -1,17 +1,20 @@
 import React from 'react';
-import RoundButton from './RoundButton';
+import { RoundButton, FlexCenter, Number } from './styled';
 
 const Controls = ({ name = '', timer, subtract, add }) => {
   return (
-    <div className="text-center m-5">
-      <h5 id={`${name.toLowerCase()}-label`}>{`${name}`}</h5>
-      <div className="d-flex justify-content-center align-items-center flex-row-reverse">
-        <RoundButton onClick={() => add()}>M</RoundButton>
-        <RoundButton onClick={() => subtract()}>L</RoundButton>
-        <p>{timer}</p>
-        <RoundButton onClick={() => subtract()}>R</RoundButton>
-      </div>
-    </div>
+    <FlexCenter direction="column">
+      <h5>{name}</h5>
+      <FlexCenter>
+        <RoundButton color="white" onClick={() => subtract()}>
+          -
+        </RoundButton>
+        <Number size={2}>{timer}</Number>
+        <RoundButton color="white" onClick={() => add()}>
+          +
+        </RoundButton>
+      </FlexCenter>
+    </FlexCenter>
   );
 };
 
