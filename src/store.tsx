@@ -1,5 +1,14 @@
 import React, { createContext, useReducer } from 'react';
 
+type IState = {
+  timer: Number,
+  minutes: Number,
+  intervals: Number,
+  session: Number,
+  started: Boolean,
+  breath: Boolean
+}
+
 const initialState = {
   timer: 3,
   minutes: 3,
@@ -13,8 +22,8 @@ const store = createContext(initialState);
 
 const { Provider } = store;
 
-const StateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer((state, action) => {
+const StateProvider = ({ children }: any) => {
+  const [state, dispatch] = useReducer((state: IState, action: any) => {
     switch (action.type) {
       case 'RESTART':
         return {...initialState}
