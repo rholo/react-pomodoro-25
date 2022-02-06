@@ -5,7 +5,7 @@ import App from './App';
 
 const app = (
   <StateProvider>
-    <App />
+    <App></App>
   </StateProvider>
 );
 

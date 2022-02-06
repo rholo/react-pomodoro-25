@@ -16,9 +16,8 @@ const Timer = () => {
         if (minutes === 0) {
           dispatch({type:'TOGGLE_BREATH'})
           dispatch({type: 'SET_MINUTES'})
-          console.log({minutes, seconds, session, breath})
           if (breath) {
-            dispatch({type: 'DECREMENT_SESSION'})
+            dispatch({type: 'DECREASE_SESSION'})
           }
           if (session === 0) {
             startPause()

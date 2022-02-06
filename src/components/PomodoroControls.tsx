@@ -9,20 +9,20 @@ const PomodoroControls = () => {
       <Controls
         name="Working"
         timer={state.timer}
-        add={() => dispatch({ type: 'INCREMENT_TIMER' })}
-        subtract={() => dispatch({ type: 'DECREMENT_TIMER' })}
+        add={() => dispatch({ type: 'INCREASE_TIMER' })}
+        subtract={() => dispatch({ type: 'DECREASE_TIMER' })}
       />
       <Controls
         name="Breaks"
         timer={state.intervals}
-        add={() => dispatch({ type: 'INCREMENT_INTERVALS' })}
-        subtract={() => dispatch({ type: 'DECREMENT_INTERVALS' })}
+        add={() => dispatch({ type: 'INCREASE_INTERVALS' })}
+        subtract={() => dispatch({ type: 'DECREASE_INTERVALS' })}
       />
       <Controls
         name="Session"
         timer={state.session}
-        add={() => dispatch({ type: 'INCREMENT_SESSION' })}
-        subtract={() => dispatch({ type: 'DECREMENT_SESSION' })}
+        add={() => dispatch({ type: 'INCREASE_SESSION' })}
+        subtract={() => dispatch({ type: 'DECREASE_SESSION' })}
       />
     </div>
   );

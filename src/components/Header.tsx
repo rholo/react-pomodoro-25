@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
-const Header = (props) => {
-  const [title, setTitle] = useState('Hello!');
+interface IHeader {
+  title: String
+}
+const Header = (props: IHeader) => {
+  const [title, setTitle] = useState<String>('Hello!');
   const updateTitle = () => {
     if (props.title) {
       setTitle(props.title);

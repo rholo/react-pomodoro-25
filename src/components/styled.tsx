@@ -18,18 +18,22 @@ const Button = styled.button`
   padding: 1rem;
   color: white;
 `;
+type IFlexCenter = {
+  direction?: String
+}
 const FlexCenter = styled.div`
   display: flex;
-  flex-direction: ${(props) =>
+  flex-direction: ${(props: IFlexCenter) =>
     props.direction ? `${props.direction}` : 'row'};
   align-items: center;
   justify-content: center;
 `;
+type INumber = {size?: Number}
 const Number = styled.span`
   font-weight: 100;
   margin:1rem;
   padding:0;
   line-height:0;
-  font-size: ${(props) => (props.size ? `${props.size}rem` : '2rem')}
+  font-size: ${(props: INumber) => (props.size ? `${props.size}rem` : '2rem')}
 `;
 export { RoundButton, Button, FlexCenter, Number };
