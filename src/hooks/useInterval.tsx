@@ -1,6 +1,9 @@
 import { useEffect, useRef, useLayoutEffect } from 'react';
 // inspired by https://overreacted.io/making-setinterval-declarative-with-react-hooks/
-function useInterval(callbackFn, delay) {
+type Callback = Function;
+type Delay = number | null;
+
+function useInterval(callbackFn: Callback, delay: Delay) {
   const currentCallback = useRef(callbackFn);
 
   useLayoutEffect(() => {

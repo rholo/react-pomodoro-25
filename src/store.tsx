@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
-import {timerReducer} from './reducers';
+import { timerReducer, IState, Action } from './reducers';
 
 const initialState = {
   timer: 3,
@@ -9,15 +9,17 @@ const initialState = {
   started: false,
   breath: false,
 };
+interface TimerReducer {
+  state: IState,
+  dispatch: Dispatch<Action>
+}
 
-const store = createContext(initialState);
-
-const { Provider } = store;
+const TimerContext = createContext<TimerReducer>({state: initialState, dispatch: () => {}});
 
 const StateProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(timerReducer, initialState);
 
-  return <Provider value={{ state, dispatch }}>{children}</Provider>;
+  return <TimerContext.Provider value={{ state, dispatch }}>{children}</TimerContext.Provider>;
 };
 
-export { store, StateProvider };
+export { TimerContext as store, StateProvider };

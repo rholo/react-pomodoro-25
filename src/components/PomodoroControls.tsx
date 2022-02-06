@@ -3,7 +3,7 @@ import Controls from './Controls';
 import { store } from '../store';
 
 const PomodoroControls = () => {
-  const { state, dispatch } = useContext(store);
+  const { state, dispatch } = useContext<any>(store);
   return (
     <div>
       <Controls
