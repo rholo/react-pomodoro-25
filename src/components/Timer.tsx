@@ -4,7 +4,7 @@ import useInterval from '../hooks/useInterval';
 import { Number, Button } from './styled';
 
 const Timer = () => {
-  const { state, dispatch } = useContext<any>(store);
+  const { state, dispatch } = useContext(store);
   const { session, started, minutes, breath } = state;
   const [seconds, setSeconds] = useState(5);
   const [buttonLabel, setButtonLabel] = useState('Start');
@@ -16,9 +16,8 @@ const Timer = () => {
         if (minutes === 0) {
           dispatch({type:'TOGGLE_BREATH'})
           dispatch({type: 'SET_MINUTES'})
-          console.log({minutes, seconds, session, breath})
           if (breath) {
-            dispatch({type: 'DECREMENT_SESSION'})
+            dispatch({type: 'DECREASE_SESSION'})
           }
           if (session === 0) {
             startPause()
