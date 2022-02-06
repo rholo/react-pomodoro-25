@@ -21,8 +21,8 @@ const PomodoroControls = () => {
       <Controls
         name="Session"
         timer={state.session}
-        add={() => dispatch({ type: 'DECREASE_SESSION' })}
-        subtract={() => dispatch({ type: 'INCREASE_SESSION' })}
+        add={() => dispatch({ type: 'INCREASE_SESSION' })}
+        subtract={() => dispatch({ type: 'DECREASE_SESSION' })}
       />
     </div>
   );

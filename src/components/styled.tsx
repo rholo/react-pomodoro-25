@@ -18,12 +18,12 @@ const Button = styled.button`
   padding: 1rem;
   color: white;
 `;
-type iFlexCenter = {
+type IFlexCenter = {
   direction?: String
 }
 const FlexCenter = styled.div`
   display: flex;
-  flex-direction: ${(props: iFlexCenter) =>
+  flex-direction: ${(props: IFlexCenter) =>
     props.direction ? `${props.direction}` : 'row'};
   align-items: center;
   justify-content: center;
