@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Controls from './Controls';
-import { store } from '../store';
+import { store } from '../context';
 
 const PomodoroControls = () => {
   const { state, dispatch } = useContext(store);

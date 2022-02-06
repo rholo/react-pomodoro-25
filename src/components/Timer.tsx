@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { store } from '../store';
+import { store } from '../context';
 import useInterval from '../hooks/useInterval';
 import { Number, Button } from './styled';
 
