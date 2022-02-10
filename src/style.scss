@@ -9,7 +9,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans
 html,
 body {
   @extend %reset;
-  background: linear-gradient(#16a085, #3498db);
+  background: black;
 }
 main {
   height: 100vh;

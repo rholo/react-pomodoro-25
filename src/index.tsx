@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { StateProvider } from './context';
 import App from './App';
-
 const app = (
   <StateProvider>
-    <App></App>
+    <App />
   </StateProvider>
 );
 
